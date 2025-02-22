@@ -3,105 +3,131 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Генератор интернет-цитат</title>
+    <title>Школьный дневник</title>
+    <link rel="stylesheet" href="./fonts/fonts.css">
     <link rel="stylesheet" href="./style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        h1,
+        h2,
+        div,
+        p {
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            padding: 35px 143px 95px;
+            font-family: 'StratosSkyeng', sans-serif;
+            color: #fff;
+            background: linear-gradient(130deg, rgba(173, 97, 255, 1) 0%, rgba(134, 119, 255, 1) 45%, rgba(0, 193, 255, 1) 100%);
+        }
+        th,
+        td {
+            border: 1px solid white;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            background-color: #0F4D6D;
+            font-size: 28px;
+        }
+
+        td {
+            font-size: 24px;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            margin-bottom: 35px;
+        }
+
+        div {
+            margin-top: 26px;
+        }
+
+
+    </style>
 </head>
 
+
+
 <body>
-    <div class="main">
-        <h1 class="main__title">Генератор интернет-цитат</h1>
-        <div class="main__img-wrap">
-            <img src="images/1.png" id="image" class="main__img show">
-        </div>
-        <div class="main__quote-wrap">
-            <p id="quote" class="main__quote show">Кто рано встает, тот потом пожалеет о своем решении.</p>
-        </div>
-        
-        <button class="main__button" onclick="generateQuote()">Сгенерировать цитату</button>
-    </div>
+    <h1>Школьный дневник</h1>
+    <table>
+        <tr>
+            <th>День недели</th>
+            <th>Предмет</th>
+            <th>Домашнее задание</th>
+            <th>Кабинет</th>
+            <th>Время</th>
+        </tr>
+        <tr>
+            <td>Понедельник</td>
+            <td>Математика</td>
+            <td>Выпонить задания с 1 по 10 из учебника</td>
+            <td>104</td>
+            <td>9:00</td>
+        </tr>
+        <tr>
+            <td>Вторник</td>
+            <td>Английский язык</td>
+            <td>Подготовиться к уроку на следующий день</td>
+            <td>302</td>
+            <td>8:00</td>
+        </tr>
+        <tr>
+            <td>Среда</td>
+            <td>История</td>
+            <td>Написать сочинение по теме "Великая Отечественная война"</td>
+            <td>208</td>
+            <td>10:00</td>
+        </tr>
+        <tr>
+            <td>Четверг</td>
+            <td>Физика</td>
+            <td>Решить задачу</td>
+            <td>204</td>
+            <td>9:00</td>
+        </tr>
+        <tr>
+            <td>Пятница</td>
+            <td>География</td>
+            <td>Прочитать параграф</td>
+            <td>111</td>
+            <td>11:00</td>
+        </tr>
+    </table>
+    <ul>
+        <li>Не забыть позавтракать</li>
+        <li>Отнести книгу в библиотеку</li>
+        <li>Почесать репу</li>
+        <li>Показать проект по Web-разработке друзьям</li>
+    </ul>
 
-    <script>
-        let quote = document.getElementById("quote");
-        let image = document.getElementById("image");
-
-function generateQuote() {
-    // Тут выбирается рандомная цитата (randomQuote)
-
-    quote.textContent = randomQuote;
-}
-
-        let begining = [
-            'Кто рано встает, ',
-            'Не бойся ошибаться,',
-            'Когда меня рожали, ',
-            'Каждый может кинуть камень в волка, ',
-            'Нельзя стоять, когда другие работают, ',
-            'Иногда, жизнь - это жизнь, '
-        ] 
-
-        let ending = [
-            'тот потом пожалеет о своем решении. ',
-            'собственно тогда я и родился. ',
-            'но не каждый может кинуть волка в камень. ',
-            'надо лежать. ',
-            'а ты в ней - иногда. ',
-            'бойся не ошибаться. ',
-        ];
-        let images = [
-            '1.png',
-            '2.png',
-            '3.png',
-            '4.png',
-            '5.png',
-            '6.png',
-        ]
-        generateQuote();
-        function generateQuote() {
-            let randomBegining = getRandomElement(begining);
-            let randomEnding = getRandomElement(ending);
-            let randomImg = getRandomElement(images);
-
-            let randomQuote = randomBegining + randomEnding;
-
-        
-            hide();
-            function hide() {
-    image.classList.remove('show');
-    quote.classList.remove('show');
-    // Показывает следующие цитату и изображение с задержкой в пол секунды, чтобы успел сработать transition
-    setTimeout(show, 500);
-}
-if (randomQuote.length <= 48) {
-        quote.style.fontSize = '42px';
-        quote.style.justifyContent = 'center';
-    } else {
-        quote.style.fontSize = '';
-        quote.style.justifyContent = '';
-    }
-    function show() {
-
-    image.src = 'images/' + randomImg;
-    quote.textContent = randomQuote
-
-    image.classList.add('show');
-    quote.classList.add('show');
-}
-            console.log(randomQuote);
-
-            function getRandomElement(array) {
-                let index = Math.floor(Math.random() * array.length);
-                return array[index];
-            }
-        }
-        // Скрывает текущие цитату и изображение
-
-
-// Показывает новые цитату и изображение 
-
-    // Проверяет кол-во символов в тексте. Если их меньше 48, то меняет шрифт и выравнивает текст по центру, иначе - стандартные стили
-    
-    </script>
+    <ol>
+        <li>Информатика</li>
+        <li>История</li>
+        <li>Физ-ра</li>
+    </ol>
 </body>
 
 </html>
